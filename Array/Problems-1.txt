@@ -406,3 +406,115 @@ private:
     }
 };
 
+
+1608. Special Array With X Elements Greater Than or Equal X
+
+You are given an array nums of non-negative integers. nums is considered special if there exists a number x such that there are exactly x numbers in nums that are greater than or equal to x.
+
+Notice that x does not have to be an element in nums.
+
+Return x if the array is special, otherwise, return -1. It can be proven that if nums is special, the value for x is unique.
+class Solution {
+public:
+    int specialArray(vector<int>& nums) {
+        sort(nums.begin(),nums.end());
+        int n=nums.size();
+        for(int i=0;i<=n;i++){
+            int count=0;
+            for(int num:nums){
+            if(num>=i)
+            {
+                count++;
+            }
+        }
+            if(count==i){
+                return i;
+            }
+        }
+        return -1;
+    }
+};
+
+2016. Maximum Difference Between Increasing Elements
+
+Given a 0-indexed integer array nums of size n, find the maximum difference between nums[i] and nums[j] (i.e., nums[j] - nums[i]), such that 0 <= i < j < n and nums[i] < nums[j].
+
+class Solution {
+public:
+    int maximumDifference(vector<int>& nums) {
+        int maxi=-1;
+        int minnum=nums[0];
+        for(int i=1;i<nums.size();i++){
+            if(nums[i]<=minnum){
+                minnum=nums[i];
+            }else if(nums[i]-minnum>maxi){
+                maxi=nums[i]-minnum;    
+            }
+        }
+        return maxi;
+    }
+};
+
+2078. Two Furthest Houses With Different Colors
+
+There are n houses evenly lined up on the street, and each house is beautifully painted. You are given a 0-indexed integer array colors of length n, where colors[i] represents the color of the ith house.
+
+Return the maximum distance between two houses with different colors.
+The distance between the ith and jth houses is abs(i - j), where abs(x) is the absolute value of x.
+Return the maximum difference. If no such i and j exists, return -1.
+
+class Solution {
+public:
+    int maxDistance(vector<int>& nums) {
+        int i=0;
+        int j=nums.size()-1;
+        int maxi=INT_MIN ;
+        while(j<nums.size()){
+            if(nums[i] != nums[j])
+                maxi=max(maxi,j-i); 
+             j--;
+        }
+        i=0;
+        j=nums.size()-1;
+      while(i<nums.size()){
+          if(nums[i] != nums[j])
+              maxi=max(maxi,j-i);
+          i++;
+      }
+        return maxi;
+    }
+};
+
+
+3158. Find the XOR of Numbers Which Appear Twice
+
+You are given an array nums, where each number in the array appears either once or twice.
+
+Return the bitwise XOR of all the numbers that appear twice in the array, or 0 if no number appears twice.
+
+class Solution {
+public:
+    int duplicateNumbersXOR(vector<int>& nums) {
+        int n=nums.size();
+        vector<int>v;
+        unordered_map <int, int>mp;
+   for(int i=0; i<n; i++)
+   {
+      mp[nums[i]]++;
+   }
+  for (auto& it : mp) {
+            if (it.second == 2) {
+                v.push_back(it.first);
+            }
+        }
+        if (v.empty()) {
+            return 0;
+        }
+        int result = 0;
+        for (int num : v) {
+            result ^= num;
+        }
+
+        return result;
+    }
+};
