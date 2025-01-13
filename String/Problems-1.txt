@@ -1,0 +1,118 @@
+409. Longest Palindrome
+
+Given a string s which consists of lowercase or uppercase letters, return the length of the longest 
+palindrome
+ that can be built with those letters.
+
+Letters are case sensitive, for example, "Aa" is not considered a palindrome.
+
+class Solution {
+public:
+    int longestPalindrome(string s) {
+        int count=0;
+        int n=0;
+        unordered_map<char,int>m;
+        for(char c:s)
+        {
+            m[c]++;
+        }
+      for (auto it : m){
+        if(it.second %2!=0){
+            count=count+it.second-1;
+        n=1;
+        }
+    else{
+        count+=it.second;
+        }
+}
+        return count+n;
+    }
+};
+
+1446. Consecutive Characters
+
+The power of the string is the maximum length of a non-empty substring that contains only one unique character.
+
+Given a string s, return the power of s.
+
+class Solution {
+public:
+    int maxPower(string s) {
+         int count=1;
+        int maxi=1;
+        for(int i=0;i<s.size();i++){
+            if(s[i]==s[i+1]){
+                count++;
+                maxi=max(maxi,count);
+            }else{
+                count=1;
+            }
+        }
+        return maxi;
+    }
+};
+
+
+3110. Score of a String
+You are given a string s. The score of a string is defined as the sum of the absolute difference between the ASCII values of adjacent characters.
+
+Return the score of s.
+
+class Solution {
+public:
+    int scoreOfString(string s) {
+        int sum=0;
+        for(int i=0;i<s.size()-1;i++){
+            sum+=abs(s[i]-s[i+1]);
+            }
+        return sum;
+    }
+};
+
+344. Reverse String
+
+Given a positive integer num, return true if num is a perfect square or false otherwise.
+
+A perfect square is an integer that is the square of an integer. In other words, it is the product of some integer with itself.
+
+You must not use any built-in library function, such as sqrt.
+
+class Solution {
+public:
+    void reverseString(vector<char>& s) {
+        int left = 0;
+        int right = s.size() - 1;
+        while (left < right) {
+            // Swap the elements at left and right
+            char temp = s[left];
+            s[left] = s[right];
+            s[right] = temp;
+            // Move the pointers towards the center
+            left++;
+            right--;
+    }
+    }
+};
+
+1446. Consecutive Characters
+
+The power of the string is the maximum length of a non-empty substring that contains only one unique character.
+
+Given a string s, return the power of s.
+
+class Solution {
+public:
+    int maxPower(string s) {
+         int count=1;
+        int maxi=1;
+        for(int i=0;i<s.size();i++){
+            if(s[i]==s[i+1]){
+                count++;
+                maxi=max(maxi,count);
+            }else{
+                count=1;
+            }
+        }
+        return maxi;
+    }
+};
